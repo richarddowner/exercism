@@ -5,4 +5,10 @@ package etl
 
 func Transform(map[int][]string) map[string]int {
 	return nil
+
+	// for each record in the map input
+	// add the key and value to the new map
+	// old key becomes new value
+	// old value becomes new key
+
 }
