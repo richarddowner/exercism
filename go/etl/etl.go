@@ -1,7 +1,7 @@
 package etl
 
 import (
-	"fmt"
+	"strings"
 )
 
 // given map[int]array (old format)
@@ -17,10 +17,8 @@ func Transform(input map[int][]string) map[string]int {
 	output := make(map[string]int)
 
 	for k, v := range input {
-		// fmt.Println(k)
 		for _, char := range v {
-			fmt.Println(char)
-			output[char] = k
+			output[strings.ToLower(char)] = k
 		}
 	}
 
