@@ -17,11 +17,11 @@ func Transform(input map[int][]string) map[string]int {
 	output := make(map[string]int)
 
 	for k, v := range input {
-		fmt.Println(k)
+		// fmt.Println(k)
 		for _, char := range v {
 			fmt.Println(char)
+			output[char] = k
 		}
-		fmt.Println("")
 	}
 
 	return output
