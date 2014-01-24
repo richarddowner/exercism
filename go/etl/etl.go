@@ -18,8 +18,8 @@ func Transform(input map[int][]string) map[string]int {
 
 	for k, v := range input {
 		fmt.Println(k)
-		for i, s := range v {
-			fmt.Println(s[i])
+		for _, char := range v {
+			fmt.Println(char)
 		}
 		fmt.Println("")
 	}
