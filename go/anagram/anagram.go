@@ -4,25 +4,28 @@ import (
 	"fmt"
 )
 
+// Sum candidate Ascii codes and
+// compare with the sum of subject Ascii code
+
 func Detect(subject string, candidates []string) []string {
 
 	// todo: dynamic size array?
 	var anagrams []string
 
-	var subjectAsciiTotal = 0
+	var subjectAsciiCodeSum = 0
 	for _, subjectAsciiCode := range subject {
-		subjectAsciiTotal = subjectAsciiTotal + int(subjectAsciiCode)
+		subjectAsciiCodeSum = subjectAsciiCodeSum + int(subjectAsciiCode)
 	}
 
 	for _, candidate := range candidates {
-		var candidateAsciiTotal = 0
+		var candidateAsciiCodeSum = 0
 		for _, candidateAsciiCode := range candidate {
-			candidateAsciiTotal = candidateAsciiTotal + int(candidateAsciiCode)
+			candidateAsciiCodeSum = candidateAsciiCodeSum + int(candidateAsciiCode)
 		}
 
-		fmt.Println(candidate, ":", candidateAsciiTotal, " | ", subject, ":", subjectAsciiTotal)
+		fmt.Println(candidate, ":", candidateAsciiCodeSum, " | ", subject, ":", subjectAsciiCodeSum)
 
-		if subjectAsciiTotal == candidateAsciiTotal {
+		if subjectAsciiCodeSum == candidateAsciiCodeSum {
 			// add candidate to the array
 			anagrams[0] = candidate
 		}
