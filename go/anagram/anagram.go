@@ -10,7 +10,7 @@ import (
 func Detect(subject string, candidates []string) []string {
 
 	// todo: dynamic size array?
-	var anagrams []string
+	var anagrams = make([]string, 0)
 
 	var subjectAsciiCodeSum = 0
 	for _, subjectAsciiCode := range subject {
@@ -25,9 +25,9 @@ func Detect(subject string, candidates []string) []string {
 
 		fmt.Println(candidate, ":", candidateAsciiCodeSum, " | ", subject, ":", subjectAsciiCodeSum)
 
-		if subjectAsciiCodeSum == candidateAsciiCodeSum {
+		if subjectAsciiCodeSum == candidateAsciiCodeSum && subject != candidate {
 			// add candidate to the array
-			anagrams[0] = candidate
+			anagrams = append(anagrams, candidate)
 		}
 	}
 	return anagrams
