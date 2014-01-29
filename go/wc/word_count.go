@@ -1,4 +1,4 @@
-package word-count
+package wc
 
 func WordCount(words []string) int {
 
