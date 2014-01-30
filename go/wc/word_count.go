@@ -1,10 +1,17 @@
+/*
+Package wc implements WordCount;
+a function to count occurances of
+words in a string.
+
+Returns
+*/
 package wc
 
-func WordCount(words string) map[string]int {
+type Histogram map[string]int
 
-	output := make(map[string]int)
+func WordCount(words string) Histogram {
 
-	output[words] = 1
+	histogram := make(Histogram)
 
-	return output
+	return histogram
 }
