@@ -1,7 +1,7 @@
 class Bob:
 	def hey(self, sentence):
 		# if sentence is empty or whitespace
-		if not sentence:
+		if not sentence.strip():
 			return 'Fine. Be that way!'
 		# if sentence is all uppercase
 		if sentence == sentence.upper():
