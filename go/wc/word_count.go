@@ -6,7 +6,7 @@ words in a string.
 package wc
 
 import (
-	//"fmt"
+	"fmt"
 	"strings"
 )
 
@@ -16,17 +16,30 @@ func WordCount(input string) Histogram {
 
 	histogram := make(Histogram)
 
+	input = strings.ToLower(input)
+
 	words := strings.Split(input, " ")
 
 	for _, word := range words {
-		count := 0
+
+		// remove punctuation
+		word = strings.Replace(word, ":", "", -1)
+		word = strings.Replace(word, "!", "", -1)
+		word = strings.Replace(word, "&", "", -1)
+		word = strings.Replace(word, "@", "", -1)
+		word = strings.Replace(word, "$", "", -1)
+		word = strings.Replace(word, "%", "", -1)
+		word = strings.Replace(word, "^", "", -1)
+		fmt.Println(word)
+
+		matches := 0
 		for _, possibleMatch := range words {
 			if word == possibleMatch {
 				// fmt.Println("Match: ", word, ":", possibleMatch)
-				count++
+				matches++
 			}
 		}
-		histogram[word] = count
+		histogram[word] = matches
 	}
 
 	return histogram
