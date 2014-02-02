@@ -6,7 +6,7 @@ words in a string.
 package wc
 
 import (
-	"fmt"
+	//"fmt"
 	"strings"
 )
 
@@ -22,11 +22,11 @@ func WordCount(input string) Histogram {
 		count := 0
 		for _, possibleMatch := range words {
 			if word == possibleMatch {
-				fmt.Println("Match: ", word, ":", possibleMatch)
+				// fmt.Println("Match: ", word, ":", possibleMatch)
 				count++
 			}
 		}
-		histogram = append(histogram, word, count)
+		histogram[word] = count
 	}
 
 	return histogram
