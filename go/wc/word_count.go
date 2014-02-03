@@ -15,13 +15,13 @@ type Histogram map[string]int
 func WordCount(input string) Histogram {
 	histogram := make(Histogram)
 
-	// Lower case the input string
+	// Normalize the input string by converting to lower case
 	input = strings.ToLower(input)
 
-	// Split and remove punctuation with regex
+	// Split out the words and remove punctuation with regex
 	words := regexp.MustCompile("([a-z0-9])+").FindAllString(input, -1)
 
-	// Check for match
+	// Check for matching words and add to Histogram
 	for _, word := range words {
 		matches := 0
 		for _, possibleMatch := range words {
