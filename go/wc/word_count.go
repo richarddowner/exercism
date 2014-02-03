@@ -16,26 +16,22 @@ func WordCount(input string) Histogram {
 
 	histogram := make(Histogram)
 
+	// Lower case the input string
 	input = strings.ToLower(input)
 
+	// Split the input string into seperate words
 	words := strings.Split(input, " ")
 
+	// Remove punctuation
+
+	// Remove any empty words after cutting out the punctuation
+
+	// Check for match
 	for _, word := range words {
-
-		// remove punctuation
-		word = strings.Replace(word, ":", "", -1)
-		word = strings.Replace(word, "!", "", -1)
-		word = strings.Replace(word, "&", "", -1)
-		word = strings.Replace(word, "@", "", -1)
-		word = strings.Replace(word, "$", "", -1)
-		word = strings.Replace(word, "%", "", -1)
-		word = strings.Replace(word, "^", "", -1)
 		fmt.Println(word)
-
 		matches := 0
 		for _, possibleMatch := range words {
 			if word == possibleMatch {
-				// fmt.Println("Match: ", word, ":", possibleMatch)
 				matches++
 			}
 		}
