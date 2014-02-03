@@ -7,6 +7,7 @@ package wc
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 )
 
@@ -14,17 +15,15 @@ type Histogram map[string]int
 
 func WordCount(input string) Histogram {
 
-	histogram := make(Histogram)
-
 	// Lower case the input string
 	input = strings.ToLower(input)
 
-	// Split the input string into seperate words
-	words := strings.Split(input, " ")
+	// Split and remove punctuation in 1 step
+	words := regexp.MustCompile("([a-z])+").FindAllString(input, -1)
 
-	// Remove punctuation
+	fmt.Println(words)
 
-	// Remove any empty words after cutting out the punctuation
+	histogram := make(Histogram)
 
 	// Check for match
 	for _, word := range words {
