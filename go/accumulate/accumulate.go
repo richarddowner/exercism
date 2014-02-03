@@ -1,9 +1,14 @@
+/*
+Package accumulate implements Accumulate;
+a function to map a given fucntion to a
+given string.
+*/
 package accumulate
 
-func Accumulate(input []string, f func(string) string) []string {
-	vsm := make([]string, len(input))
-	for i, v := range input {
-		vsm[i] = f(v)
+func Accumulate(input []string, mutate func(string) string) []string {
+	output := make([]string, len(input))
+	for i, item := range input {
+		output[i] = mutate(item)
 	}
-	return vsm
+	return output
 }
