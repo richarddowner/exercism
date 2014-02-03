@@ -6,7 +6,6 @@ words in a string.
 package wc
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
 )
@@ -14,20 +13,16 @@ import (
 type Histogram map[string]int
 
 func WordCount(input string) Histogram {
+	histogram := make(Histogram)
 
 	// Lower case the input string
 	input = strings.ToLower(input)
 
-	// Split and remove punctuation in 1 step
-	words := regexp.MustCompile("([a-z])+").FindAllString(input, -1)
-
-	fmt.Println(words)
-
-	histogram := make(Histogram)
+	// Split and remove punctuation with regex
+	words := regexp.MustCompile("([a-z0-9])+").FindAllString(input, -1)
 
 	// Check for match
 	for _, word := range words {
-		fmt.Println(word)
 		matches := 0
 		for _, possibleMatch := range words {
 			if word == possibleMatch {
@@ -36,6 +31,5 @@ func WordCount(input string) Histogram {
 		}
 		histogram[word] = matches
 	}
-
 	return histogram
 }
