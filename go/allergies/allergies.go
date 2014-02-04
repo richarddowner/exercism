@@ -13,6 +13,11 @@ Tests
 {[]string{"eggs", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 509},
 */
 
+import (
+	"fmt"
+	"math"
+)
+
 var commonAllergies = []string{
 	"eggs",         // 1
 	"peanuts",      // 2
@@ -24,13 +29,17 @@ var commonAllergies = []string{
 	"cats",         // 128
 }
 
-func Allergies(score int) (names []string) {
+func Allergies(score int) []string {
+	names := make([]string, 0)
 	// loop over common allergies backwards
 	for i := len(commonAllergies) - 1; i >= 0; i-- {
-		// if score >= 2^i
-		// add cats to names
+		if score >= int(math.Pow(float64(2), float64(i))) {
+			fmt.Println(2, "^", i, "=", math.Pow(float64(2), float64(i)))
+			names = append(names, commonAllergies[i])
+			score = score - int(math.Pow(float64(2), float64(i)))
+		}
 	}
-	return
+	return names
 }
 
 /*
