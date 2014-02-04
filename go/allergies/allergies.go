@@ -1,3 +1,13 @@
+/*
+Package allergies implements
+Allergies: 	a function that takes an
+			allergy score and returns
+			a list of allergy matches.
+AllergicTo: a function that takes an
+			allergy score and an allergy
+			name and returns true if
+			the score matches the name.
+*/
 package allergies
 
 import (
@@ -32,7 +42,7 @@ func Allergies(score int) []string {
 	return allergyMatches
 }
 
-func AllergicTo(score int, name string) (fact bool) {
+func AllergicTo(score int, name string) bool {
 	byte := strconv.FormatInt(int64(score), 2)
 	position := 0
 	for bit := len(byte) - 1; bit >= 0; bit-- {
