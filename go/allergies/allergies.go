@@ -14,7 +14,7 @@ Tests
 */
 
 import (
-	"fmt"
+	// "fmt"
 	"math"
 )
 
@@ -30,15 +30,23 @@ var commonAllergies = []string{
 }
 
 func Allergies(score int) []string {
+
 	names := make([]string, 0)
-	// loop over common allergies backwards
+
 	for i := len(commonAllergies) - 1; i >= 0; i-- {
 		if score >= int(math.Pow(float64(2), float64(i))) {
-			fmt.Println(2, "^", i, "=", math.Pow(float64(2), float64(i)))
 			names = append(names, commonAllergies[i])
-			score = score - int(math.Pow(float64(2), float64(i)))
+			score -= int(math.Pow(float64(2), float64(i)))
 		}
 	}
+
+	// reverse the array
+	temp := make([]string, 0)
+	for i := len(names) - 1; i >= 0; i-- {
+		temp = append(temp, names[i])
+	}
+	names = temp
+
 	return names
 }
 
