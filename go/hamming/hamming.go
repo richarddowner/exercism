@@ -5,10 +5,10 @@ hamming distance between two DNA strands.
 */
 package hamming
 
-func Distance(strandA string, strandB string) (hammingDistance int) {
+func Distance(strandA, strandB string) (mutations int) {
 	for i := 0; len(strandA) > i && len(strandB) > i; i++ {
 		if strandA[i] != strandB[i] {
-			hammingDistance++
+			mutations++
 		}
 	}
 	return
