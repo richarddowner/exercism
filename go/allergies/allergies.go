@@ -1,21 +1,8 @@
 package allergies
 
-/*
-Tests
-{[]string{}, 0},
-{[]string{"eggs"}, 1},
-{[]string{"peanuts"}, 2},
-{[]string{"strawberries"}, 8},
-{[]string{"eggs", "peanuts"}, 3},
-{[]string{"eggs", "shellfish"}, 5},
-{[]string{"strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 248},
-{[]string{"eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 255},
-{[]string{"eggs", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 509},
-*/
-
 import (
 	// "fmt"
-	"math"
+	"strconv"
 )
 
 var commonAllergies = []string{
@@ -30,23 +17,21 @@ var commonAllergies = []string{
 }
 
 func Allergies(score int) []string {
-
 	names := make([]string, 0)
 
-	for i := len(commonAllergies) - 1; i >= 0; i-- {
-		if score >= int(math.Pow(float64(2), float64(i))) {
-			names = append(names, commonAllergies[i])
-			score -= int(math.Pow(float64(2), float64(i)))
+	// convert score to binary byte format
+	byte := strconv.FormatInt(int64(score), 2)
+
+	position := 0
+	// loop of the byte string backwards
+	for bit := len(byte) - 1; bit >= 0; bit-- {
+		// if bit is 1 and
+		// current position is less than the total length of commonAllergies array
+		if byte[bit] == '1' && position < len(commonAllergies) {
+			names = append(names, commonAllergies[position])
 		}
+		position++
 	}
-
-	// reverse the array
-	temp := make([]string, 0)
-	for i := len(names) - 1; i >= 0; i-- {
-		temp = append(temp, names[i])
-	}
-	names = temp
-
 	return names
 }
 
