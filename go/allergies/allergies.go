@@ -43,13 +43,10 @@ func Allergies(score int) []string {
 }
 
 func AllergicTo(score int, name string) bool {
-	byte := strconv.FormatInt(int64(score), 2)
-	position := 0
-	for bit := len(byte) - 1; bit >= 0; bit-- {
-		if byte[bit] == '1' && allergiesList[position] == name {
+	for _, allergy := range Allergies(score) {
+		if allergy == name {
 			return true
 		}
-		position++
 	}
 	return false
 }
