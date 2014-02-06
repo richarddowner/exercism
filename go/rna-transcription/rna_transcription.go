@@ -1,15 +1,24 @@
+/*
+Package strand implements ToRna;
+a function to transcribe DNA to RNA.
+This is the second step in synthesising
+protiens from DNA.
+
+Each base in the DNA strand is transcribed
+as follows: C G A T -> G C U A
+*/
 package strand
 
-// C G A T -> G C U A
 func ToRna(dna string) (rna string) {
 	for _, base := range dna {
-		if base == 'C' {
+		switch base {
+		case 'C':
 			rna += "G"
-		} else if base == 'G' {
+		case 'G':
 			rna += "C"
-		} else if base == 'A' {
+		case 'A':
 			rna += "U"
-		} else if base == 'T' {
+		case 'T':
 			rna += "A"
 		}
 	}
