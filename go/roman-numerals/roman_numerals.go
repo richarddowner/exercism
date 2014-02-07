@@ -1,3 +1,8 @@
+/*
+Package romannumerals implements ToRomanNumeral;
+a function that takes an arabic integer and returns
+that integer converted to a roman numeral string.
+*/
 package romannumerals
 
 import (
