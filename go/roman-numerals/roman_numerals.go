@@ -17,9 +17,36 @@ import (
 	"strconv"
 )
 
-func ToRomanNumeral(arabic int) (roman string) {
+func ToRomanNumeral(arabic int) string {
+
+	roman := make([]string, 0)
+
+	arabic = 545
 
 	romanNumerals := [][]string{{"I", "V"}, {"X", "L"}, {"C", "D"}, {"M", ""}}
+
+	decimal := strconv.Itoa(arabic)
+
+	fmt.Println("decimal = ", decimal)
+
+	th := len(decimal) - 1
+	for i := 0; i < len(decimal); i++ {
+		// fmt.Println("i = ", i)
+		// fmt.Println("decimal[i] = ", decimal[i])
+		if decimal[i] == '4' {
+			// fmt.Println("th", th)
+			// fmt.Println("romanNumerals[count][0] = ", romanNumerals[th][0])
+			// fmt.Println("romanNumerals[count][1] = ", romanNumerals[count][1])
+			roman = append(roman, romanNumerals[th][0]+romanNumerals[th][1])
+		}
+		if decimal[i] == '5' {
+			// fmt.Println("th", th)
+			roman = append(roman, romanNumerals[th][1])
+		}
+		th--
+	}
+
+	fmt.Println("roman = ", roman)
 
 	return "I"
 }
