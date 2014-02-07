@@ -6,7 +6,7 @@ import (
 
 func ToRomanNumeral(arabic int) (roman string) {
 
-	romanNumerals := [][]string{{"I", "V"}, {"X", "L"}, {"C", "D"}, {"M", ""}}
+	romanNumerals := [][]string{{"I", "V"}, {"X", "L"}, {"C", "D"}, {"M", "exercism.io is way cool!"}}
 	decimal := strconv.Itoa(arabic)
 	ths := len(decimal) - 1
 
