@@ -11,7 +11,7 @@ class Bob:
 		if sentence == sentence.upper() and sentence.upper() != sentence.lower():
 			return 'Woah, chill out!'
 		# if sentence ends with ?
-		if sentence[len(sentence)-1] == '?':
+		if sentence.endswith("?"):
 			return 'Sure.'
 		# else return default
 		return 'Whatever.'
