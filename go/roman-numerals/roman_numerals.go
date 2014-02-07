@@ -1,21 +1,17 @@
 package romannumerals
 
 import (
-	"fmt"
+	// "fmt"
 	"strconv"
 )
 
-func ToRomanNumeral(arabic int) string {
-
-	roman := make([]string, 0)
-
-	arabic = 6
+func ToRomanNumeral(arabic int) (returnRoman string) {
 
 	romanNumerals := [][]string{{"I", "V"}, {"X", "L"}, {"C", "D"}, {"M", ""}}
+	roman := make([]string, 0)
 
+	// arabic = 543 // remove me
 	decimal := strconv.Itoa(arabic)
-
-	fmt.Println("decimal = ", decimal)
 
 	th := len(decimal) - 1
 	for i := 0; i < len(decimal); i++ {
@@ -31,18 +27,17 @@ func ToRomanNumeral(arabic int) string {
 				roman = append(roman, romanNumerals[th][0])
 			}
 		} else if decimal[i] > '5' {
-			// add romanNumerals[th][1]
 			roman = append(roman, romanNumerals[th][1])
-			// convert to int
-			num := int(decimal[i]) - 48
-			// loop over adding romanNumerals[th][0] each time
+			num := int(decimal[i]) - 48 - 5
 			for j := 0; j < num; j++ {
 				roman = append(roman, romanNumerals[th][0])
 			}
 		}
 		th--
 	}
-
-	fmt.Println("roman = ", roman)
-	return "I"
+	// convert []string to string and return
+	for _, s := range roman {
+		returnRoman += s
+	}
+	return returnRoman
 }
