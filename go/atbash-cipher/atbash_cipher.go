@@ -11,9 +11,10 @@ func Atbash(plaintext string) (ciphertext string) {
 
 	// remove punctuation
 	plaintext = strings.Join(regexp.MustCompile("([a-zA-Z0-9])+").FindAllString(plaintext, -1), "")
-
-	// convert to lower and remove spaces
-	plaintext = strings.Replace(strings.ToLower(plaintext), " ", "", -1)
+	// convert to lowercase
+	plaintext = strings.ToLower(plaintext)
+	// remove spaces
+	plaintext = strings.Replace(plaintext, " ", "", -1)
 
 	for i := 0; i < len(plaintext); i++ {
 		if i != 0 && i%5 == 0 {
