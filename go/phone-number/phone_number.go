@@ -5,9 +5,9 @@ import (
 	"strings"
 )
 
-func FormatPhoneNumber(input string) (output string) {
+func FormatPhoneNumber(input string) string {
+	output := strings.Join(regexp.MustCompile("([0-9])+").FindAllString(input, -1), "")
 	invalidNumber := "0000000000"
-	output = strings.Join(regexp.MustCompile("([0-9])+").FindAllString(input, -1), "")
 	if len(output) < 10 {
 		return invalidNumber
 	}
@@ -20,19 +20,19 @@ func FormatPhoneNumber(input string) (output string) {
 	if len(output) > 11 {
 		return invalidNumber
 	}
-	return
+	return output
 }
 
-func Number(input string) (output string) {
+func Number(input string) string {
 	return FormatPhoneNumber(input)
 }
 
-func AreaCode(input string) (output string) {
-	output = FormatPhoneNumber(input)
+func AreaCode(input string) string {
+	output := FormatPhoneNumber(input)
 	return output[0:3]
 }
 
-func Format(input string) (output string) {
-	input = FormatPhoneNumber(input)
-	return "(" + AreaCode(input) + ") " + input[3:6] + "-" + input[6:10]
+func Format(input string) string {
+	output := FormatPhoneNumber(input)
+	return "(" + AreaCode(output) + ") " + output[3:6] + "-" + output[6:10]
 }
