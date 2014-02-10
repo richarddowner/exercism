@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func Number(input string) (output string) {
+func FormatPhoneNumber(input string) (output string) {
 	// remove invalid chars
 	output = strings.Join(regexp.MustCompile("([0-9])+").FindAllString(input, -1), "")
 	// if the phone number is less than 10 digits assume that it is bad number
@@ -28,10 +28,17 @@ func Number(input string) (output string) {
 	return
 }
 
+func Number(input string) (output string) {
+	return FormatPhoneNumber(input)
+}
+
 func AreaCode(input string) (output string) {
-	return
+	output = FormatPhoneNumber(input)
+	return output[0:3]
 }
 
 func Format(input string) (output string) {
+	input = FormatPhoneNumber(input)
+	output = "(" + AreaCode(input) + ") " + input[3:6] + "-" + input[6:10]
 	return
 }
