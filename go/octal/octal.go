@@ -1,26 +1,23 @@
+/*
+Package octal implements ToDecimal;
+a function that takes an octal string
+and returns the converted decimal integer.
+*/
 package octal
 
 import (
-	"fmt"
-	"strconv"
-	"strings"
+	"math"
 )
 
 func ToDecimal(octal string) (decimal int64) {
-	// this is dec to octal.. not other way around
-	octalint, _ := strconv.Atoi(octal)
-	remainder := make([]string, 0)
-
-	for octalint > 0 {
-		remainder = append(remainder, strconv.Itoa(octalint%8))
-		octalint = octalint / 8
+	exponent := 0
+	for i := len(octal) - 1; i >= 0; i-- {
+		num := octal[i] - 48
+		if num > 9 {
+			return 0
+		}
+		decimal += int64(num) * int64(math.Pow(2, float64(exponent)))
+		exponent += 3
 	}
-
-	// join array
-	octal = strings.Join(remainder, "")
-	fmt.Println("octal: ", octal)
-	// convert to int
-	blah, _ := strconv.Atoi(octal)
-
-	return int64(blah)
+	return
 }
