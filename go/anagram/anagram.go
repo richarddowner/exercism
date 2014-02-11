@@ -7,10 +7,8 @@ import (
 
 type Rune []rune
 
-func (r Rune) Len() int { return len(r) }
-
-func (r Rune) Swap(i, j int) { r[i], r[j] = r[j], r[i] }
-
+func (r Rune) Len() int           { return len(r) }
+func (r Rune) Swap(i, j int)      { r[i], r[j] = r[j], r[i] }
 func (r Rune) Less(i, j int) bool { return r[i] < r[j] }
 
 func stringSort(s string) string {
