@@ -4,23 +4,21 @@ import (
 	"strconv"
 )
 
-func removeFactor(number int, factor int) (output int) {
-	return number - (number / factor)
+var number int = 0
+
+func toRainDrops(number int, factor int, word string) (output string) {
+	if number%factor == 0 {
+		output += word
+		number = number - (number / factor)
+	}
+	return
 }
 
-func Convert(number int) (output string) {
-	if number%3 == 0 {
-		output += "Pling"
-		number = removeFactor(number, 3)
-	}
-	if number%5 == 0 {
-		output += "Plang"
-		number = removeFactor(number, 5)
-	}
-	if number%7 == 0 {
-		output += "Plong"
-		number = removeFactor(number, 7)
-	}
+func Convert(input int) (output string) {
+	number = input
+	output += toRainDrops(number, 3, "Pling")
+	output += toRainDrops(number, 5, "Plang")
+	output += toRainDrops(number, 7, "Plong")
 	if output == "" {
 		return strconv.Itoa(number)
 	}
