@@ -16,8 +16,3 @@ Write a program that converts a number to a string, the contents of which depend
 - The prime factors of 34 are 2 and 17.
   - Raindrop-speak doesn't know what to make of that,
     so it just goes with the straightforward "34".
-
-
-## Source
-
-A variation on a famous interview question intended to weed out the obviously incompetent. [view source](http://jumpstartlab.com)
