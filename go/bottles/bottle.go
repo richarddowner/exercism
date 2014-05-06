@@ -3,6 +3,7 @@ package bottles
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 // number > 1: {8} {bottles} of beer on the wall, {8} {bottles} of beer.\nTake one down and pass it around, {7} bottles of beer on the wall.\n
@@ -55,6 +56,11 @@ func Verse(number int) string {
 
 	words = words + n + " " + bottles + " of beer on the wall.\n"
 
-	fmt.Println(words)
-	return words
+	return capitalize(words)
+}
+
+func capitalize(words string) (output string) {
+	output = strings.ToUpper(string(words[0]))
+	output = output + words[1:]
+	return
 }
