@@ -18,6 +18,28 @@ func Convert(number int) (output string) {
 	return ""
 }
 
+func getPrimeFactors(number int) (output string) {
+	for {
+		if number%3 == 0 {
+			fmt.Println("[3]")
+			number = number - 3
+			continue
+		}
+		if number%5 == 0 {
+			fmt.Println("[5]")
+			number = number - 5
+			continue
+		}
+		if number%7 == 0 {
+			fmt.Println("[7]")
+			number = number - 7
+			continue
+		}
+		break
+	}
+	return ""
+}
+
 // need to get prime factors, not just check for prime.
 // take number 15
 // see if it divides by 3
