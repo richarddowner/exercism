@@ -17,14 +17,18 @@ var bottles int = 99
 func Verse(number int) string {
 
 	if number > 1 {
-		// bottles--
-		// Verse(bottles)
+		fmt.Printf("%d bottles of beer on the wall, %d bottles of beer.\n", bottles, bottles)
+		bottles--
+		fmt.Println("Take one down and pass it around, %d bottles of beer on the wall.\n", bottles)
+		Verse(bottles)
 	}
 	if number == 1 {
-		// bottles--
-		// Verse(bottles)
+		fmt.Println("1 bottle of beer on the wall, 1 bottle of beer.")
+		fmt.Println("Take one down and pass it around, no more bottles of beer on the wall.\n")
+		Verse(bottles)
 	} else {
-		// bottles--
-		// Verse(bottles)
+		fmt.Println("No more bottles of beer on the wall, no more bottles of beer.")
+		fmt.Println("Go to the store and buy some more, 99 bottles of beer on the wall.")
+		return
 	}
 }
