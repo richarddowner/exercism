@@ -21,7 +21,6 @@ func Verse(number int) (output string) {
 	if number == 1 {
 		output += "1 bottle of beer on the wall, 1 bottle of beer.\n"
 		output += "Take it down and pass it around, no more bottles of beer on the wall.\n"
-		bottles--
 		return
 	} else {
 		output += "No more bottles of beer on the wall, no more bottles of beer.\n"
