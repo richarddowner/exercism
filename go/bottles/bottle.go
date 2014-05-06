@@ -4,17 +4,14 @@ import (
 	"strconv"
 )
 
-var bottles int = 99
-
 func Verse(number int) (output string) {
-	bottles = number
 	if number > 1 {
-		output += strconv.Itoa(bottles) + " bottles of beer on the wall, " + strconv.Itoa(bottles) + " bottles of beer.\n"
-		bottles--
-		if bottles == 1 {
+		output += strconv.Itoa(number) + " bottles of beer on the wall, " + strconv.Itoa(number) + " bottles of beer.\n"
+		number--
+		if number == 1 {
 			output += "Take one down and pass it around, 1 bottle of beer on the wall.\n"
 		} else {
-			output += "Take one down and pass it around, " + strconv.Itoa(bottles) + " bottles of beer on the wall.\n"
+			output += "Take one down and pass it around, " + strconv.Itoa(number) + " bottles of beer on the wall.\n"
 		}
 		return
 	}
