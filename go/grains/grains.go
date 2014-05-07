@@ -9,5 +9,5 @@ func Square(number int) uint64 {
 }
 
 func Total() uint64 {
-	return uint64(math.Pow(2, float64(64)))
+	return uint64(math.Pow(2, float64(63))) + uint64(math.Pow(2, float64(63))) - 1
 }
