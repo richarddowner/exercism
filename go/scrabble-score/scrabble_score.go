@@ -21,11 +21,12 @@ var b = [7][7]string{
 }
 
 func Score(word string) (score int) {
-	for i := 0; i < len(word); i++ {
+	for _, char := range word {
 		for j := 0; j < 7; j++ {
-			if strings.Contains(b[0][j], strings.ToUpper(string(word[i]))) {
+			if strings.Contains(b[0][j], strings.ToUpper(string(char))) {
 				point, _ := strconv.Atoi(b[1][j])
 				score += point
+				break
 			}
 		}
 	}
