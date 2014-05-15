@@ -5,10 +5,12 @@ type DNA struct {
 	Count  int
 }
 
+type Histogram struct {
+}
+
 func NewDNA(strand string) DNA {
 	dna := DNA{
 		Strand: strand,
-		Count:  0,
 	}
 	return dna
 }
