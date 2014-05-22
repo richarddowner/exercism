@@ -8,8 +8,8 @@ func Square(number int) uint64 {
 	return 1 << uint64(number-1)
 }
 
-// Total returns the total number of grains on a chess board,
-// such that total grains = 2^(64-1)
+// Total returns the total number of grains on a chessboard
+// such that total grains = 2^(64-1).
 func Total() uint64 {
 	return (1 << 64) - 1
 }

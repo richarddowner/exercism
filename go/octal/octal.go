@@ -1,14 +1,12 @@
-/*
-Package octal implements ToDecimal;
-a function that takes an octal string
-and returns the converted decimal integer.
-*/
+// Package octal implements ToDecimal.
 package octal
 
 import (
 	"math"
 )
 
+// ToDecimal takes an octal string.
+// Returns the converted decimal integer.
 func ToDecimal(octal string) (decimal int64) {
 	exponent := 0
 	for i := len(octal) - 1; i >= 0; i-- {
