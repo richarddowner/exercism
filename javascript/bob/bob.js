@@ -1,7 +1,16 @@
-// http://docs.busterjs.org/en/latest/modules/buster-test/spec/
-// http://www.phpied.com/3-ways-to-define-a-javascript-class/
-function Bob(type) {
-	this.hey = function(var words) {
+var Bob = function() {
+	this.hey = function(words) {
+		if(words.trim() === '') {
+			return "Fine. Be that way!";
+		}
+		if(words === words.toUpperCase() && words.toUpperCase() != words.toLowerCase()) {
+			return "Woah, chill out!";
+		}
+		if(words[words.length - 1] === '?') {
+			return "Sure.";
+		}
+		return "Whatever.";
+	}
+};
 
-	};
-}
+module.exports = Bob;
