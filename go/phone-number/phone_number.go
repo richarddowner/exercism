@@ -1,27 +1,27 @@
 package phonenumber
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 )
 
-const invalidNumber string = "0000000000"
+const INVALID_NUMBER = "0000000000"
 
 var numbersRegex *regexp.Regexp = regexp.MustCompile("([0-9])+")
 
 func Number(input string) string {
 	output := strings.Join(numbersRegex.FindAllString(input, -1), "")
 	length := len(output)
-	if length < 10 || length > 11 {
-		return invalidNumber
+	switch {
+	case length < 10:
+		return INVALID_NUMBER
+	case length == 10:
+		return output
+	case (length == 11 && output[0] == '1'):
+		return output[1:]
 	}
-	if length == 11 && output[0] == '1' {
-		output = output[1:]
-	}
-	if length == 11 && output[0] != '1' {
-		return invalidNumber
-	}
-	return output
+	return INVALID_NUMBER
 }
 
 func AreaCode(input string) string {
@@ -30,5 +30,5 @@ func AreaCode(input string) string {
 
 func Format(input string) string {
 	output := Number(input)
-	return "(" + AreaCode(output) + ") " + output[3:6] + "-" + output[6:10]
+	return fmt.Sprintf("(%s) %s-%s", output[0:3], output[3:6], output[6:10])
 }
