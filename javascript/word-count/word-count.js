@@ -7,6 +7,9 @@ var words = module.exports = function(sentence) {
 
 	// Remove non alphabetic symbols.
 	sentence = sentence.match(/\w+/g);
+	sentence = sentence.match(/[^\x00-\x7F]+/g);
+	
+	console.log(sentence);
 
 	// Check for word matches increment word counts if found.
 	sentence = sentence.reduce(function(wordCounts,word) {
