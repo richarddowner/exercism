@@ -14,5 +14,5 @@ var words = module.exports = function(sentence) {
 		return wordCounts;
 	}, {});
 
-	return sentence;	
+	return sentence;
 } 
