@@ -1,4 +1,4 @@
-var words = function(stringOfWords) {
+var words = module.exports = function(stringOfWords) {
 	var wordCountCollection = {};
 
 	// Remove non alphabetic symbols and extra spaces.
@@ -10,6 +10,10 @@ var words = function(stringOfWords) {
 	// Split the words out of the string.
 	var wordCollection = stringOfWords.split(" ");
 	
+	console.log(wordCollection);
+
+	// maybe use hasOwnProperty?
+
 	// Check for word matches increment if found.
 	for (i = 0; i< wordCollection.length; i++) {
 		if(wordCountCollection[wordCollection[i]] == null) {
@@ -20,5 +24,4 @@ var words = function(stringOfWords) {
 	}	
 
 	return wordCountCollection;
-}
-module.exports = words;
+} 
