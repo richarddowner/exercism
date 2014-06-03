@@ -1,27 +1,18 @@
-var words = module.exports = function(stringOfWords) {
-	var wordCountCollection = {};
-
-	// Remove non alphabetic symbols and extra spaces.
-	stringOfWords = stringOfWords.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
+// personal note - docs on reduce found here: 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+var words = module.exports = function(sentence) {
 	
-	// Normalize case
-	stringOfWords = stringOfWords.toLowerCase();
+	// Normalize case.
+	sentence = sentence.toLowerCase();
 
-	// Split the words out of the string.
-	var wordCollection = stringOfWords.split(" ");
-	
-	console.log(wordCollection);
+	// Remove non alphabetic symbols.
+	sentence = sentence.match(/\w+/g);
 
-	// maybe use hasOwnProperty?
+	// Check for word matches increment word counts if found.
+	sentence = sentence.reduce(function(wordCounts,word) {
+		wordCounts.hasOwnProperty(word) ? wordCounts[word]++ : wordCounts[word] = 1;
+		return wordCounts;
+	}, {});
 
-	// Check for word matches increment if found.
-	for (i = 0; i< wordCollection.length; i++) {
-		if(wordCountCollection[wordCollection[i]] == null) {
-			wordCountCollection[wordCollection[i]] = 1;
-		} else {
-			wordCountCollection[wordCollection[i]] += 1;	
-		}		
-	}	
-
-	return wordCountCollection;
+	return sentence;	
 } 
