@@ -1,4 +1,4 @@
-var Bob = function() {
+var Bob = module.exports = function() {
 	this.hey = function(words) {
 		if(words.trim() === '') {
 			return "Fine. Be that way!";
@@ -12,5 +12,3 @@ var Bob = function() {
 		return "Whatever.";
 	}
 };
-
-module.exports = Bob;
