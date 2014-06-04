@@ -1,6 +1,7 @@
 package robotname
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
@@ -11,6 +12,7 @@ type Robot struct {
 }
 
 func (r *Robot) Name() (name string) {
+	rand.Seed(time.Now().UTC().UnixNano())
 	name += string(randInt(65, 90))
 	name += string(randInt(65, 90))
 	name += strconv.Itoa(randInt(0, 9))
@@ -24,6 +26,7 @@ func (r *Robot) Reset() {
 }
 
 func randInt(min int, max int) (num int) {
-	rand.Seed(time.Now().UTC().UnixNano())
-	return min + rand.Intn(max-min)
+	num = rand.Intn(max-min) + min
+	fmt.Println(num)
+	return
 }
