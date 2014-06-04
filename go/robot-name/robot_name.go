@@ -7,3 +7,7 @@ type Robot struct {
 func (r *Robot) Name() string {
 	return "Test"
 }
+
+func (r *Robot) Reset() {
+
+}
