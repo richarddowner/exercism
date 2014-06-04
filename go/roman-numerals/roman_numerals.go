@@ -28,8 +28,8 @@ func ToRomanNumeral(arabic int) (roman string) {
 	for arabic > 0 {
 		for _, numeral := range correlations {
 			if arabic-numeral.k >= 0 {
-				roman += numeral.v
 				arabic -= numeral.k
+				roman += numeral.v
 				break
 			}
 		}
