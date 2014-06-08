@@ -1,36 +1,26 @@
 package robotname
 
 import (
-	//"fmt"
+	"fmt"
 	"math/rand"
-	"strconv"
-	"time"
 )
-
-var identity string = ""
 
 type Robot struct {
 	name string
 }
 
 func (r *Robot) Name() (name string) {
-	if identity == "" {
-		rand.Seed(time.Now().UTC().UnixNano()) // this needs to be lazy init
-		name += string(randInt(65, 90))
-		name += string(randInt(65, 90))
-		name += strconv.Itoa(randInt(0, 9))
-		name += strconv.Itoa(randInt(0, 9))
-		name += strconv.Itoa(randInt(0, 9))
-		identity = name
+
+	if r.name == "" {
+		r.name = fmt.Sprintf("%c%c%03d",
+			'A'+byte(rand.Intn(26)),
+			'A'+byte(rand.Intn(26)),
+			rand.Intn(1000),
+		)
 	}
-	return identity
+	return r.name
 }
 
 func (r *Robot) Reset() {
-	identity = ""
-}
-
-func randInt(min int, max int) (num int) {
-	num = rand.Intn(max-min) + min
-	return
+	*r = Robot{}
 }
