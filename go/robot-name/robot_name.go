@@ -9,8 +9,7 @@ type Robot struct {
 	name string
 }
 
-func (r *Robot) Name() (name string) {
-
+func (r *Robot) Name() string {
 	if r.name == "" {
 		r.name = fmt.Sprintf("%c%c%03d",
 			'A'+byte(rand.Intn(26)),
