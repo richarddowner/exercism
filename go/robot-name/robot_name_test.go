@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func New() *Robot { return new(Robot) }
+func New() *Robot { return &Robot{} }
 
 var namePat = regexp.MustCompile(`^[A-Z]{2}\d{3}$`)
 
